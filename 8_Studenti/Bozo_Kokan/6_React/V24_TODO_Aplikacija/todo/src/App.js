@@ -75,6 +75,7 @@ class App extends React.Component {
     const { todos, visibility } = this.state;
     const visibleTodos = this.getVisibleTodos();
     const hasCompletedTodos = todos.some(todo => todo.completed);
+    const showClearCompleted = visibility_types.ALL || visibility_types.COMPLETED;
 
     return (
       <div className="app">
@@ -88,7 +89,7 @@ class App extends React.Component {
           removeTodo={this.handleRemoveTodo.bind(this)}/>
         </div>
         {
-          hasCompletedTodos && (        
+          visibleTodos && hasCompletedTodos && showClearCompleted && (        
             <div className="clear-completed-wrapper"> 
               <span className="clear-completed" onClick={this.handleRemoveCompleted.bind(this)}>Clear Completed</span>
             </div>    

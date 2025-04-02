@@ -62,9 +62,7 @@ export default function SearchUsername({ onSearch }) {
                             onChange={handleInputChange}
                         />
                     </Form.Group>
-                    <Button variant="success" className="searchButton" onClick={handleSearch}>
-                        Search
-                    </Button>
+                    <Button variant="success" className="searchButton" onClick={handleSearch}>Search</Button>
                 </InputGroup>
             </div>
         </div>

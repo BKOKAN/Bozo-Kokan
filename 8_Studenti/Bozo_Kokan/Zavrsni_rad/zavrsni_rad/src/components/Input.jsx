@@ -1,21 +1,23 @@
 import React from "react";
 
 export default class Input extends React.Component {
-  state = {
-    text: ""
-  };
+  constructor(props) {
+    super(props);
 
-  handleChange = (e) => {
-    const text = e.target.value;
+    this.state = {
+      text: "",
+    };
+  }
+
+  handleChange = (event) => {
+    const text = event.target.value;
     this.setState({ text });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const { onSendMessage } = this.props;
     const { text } = this.state;
-
     onSendMessage(text);
     this.setState({ text: "" });
   };
@@ -27,13 +29,13 @@ export default class Input extends React.Component {
       <div className="input-container">
         <form onSubmit={this.handleSubmit}>
           <input
-            onChange={this.handleChange}
-            value={text}
             type="text"
+            value={text}
+            onChange={this.handleChange}
             placeholder="Enter your message"
             autoFocus
           />
-          <button className="send-button">Send</button>
+          <button>Send</button>
         </form>
       </div>
     );

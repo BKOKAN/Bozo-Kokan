@@ -1,54 +1,51 @@
-import './App.css';
-import React from 'react';
-import { Input, Message } from './components';
-import { Scaledrone, MemberGenerator } from './services';
+import React from "react";
+import "./App.css";
 
+import { Input, Message } from "./components";
+import { Scaledrone, MemberGenerator } from "./services";
 
-class App extends React.Component{
-
-    state = {
+class App extends React.Component {
+  state = {
     messages: [],
-    currentMemberId: null
+    currentMemberId: null,
   };
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
 
-    const confing = {
+    const config = {
       member: MemberGenerator.get(),
       onInit: this.onInit,
       onMessageReceived: this.onMessageReceived,
     };
 
-    this.drone = new Scaledrone(confing);
+    this.drone = new Scaledrone(config);
   }
 
   onInit = (currentMemberId) => {
-    this.setState({currentMemberId});
+    this.setState({ currentMemberId });
   };
-
   onMessageReceived = (newMessage) => {
-    const {messages} = this.state;
+    const { messages } = this.state;
     this.setState({
       messages: [...messages, newMessage],
-    })
+    });
   };
 
-  render(){
-
+  render() {
     const { messages, currentMemberId } = this.state;
 
     return (
-      <div className="App">
-        <div className='header'>
-        <h1>My chat app</h1>
+      <div className="app">
+        <div className="header">
+          <h1>My Chat App</h1>
         </div>
-        <ul className='message-list'>
-        {messages.map(message => (
-    <Message message={message} currentMemberId={currentMemberId} key={message.id} />
-  ))}
+        <ul className="message-list">
+          {messages.map((message) => (
+            <Message key={message.id} message={message} currentMemberId={currentMemberId} />
+          ))}
         </ul>
-        <Input onSendMessage={this.drone.sendMessage}/>
+        <Input onSendMessage={this.drone.sendMessage} />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-const SCALEDRONE_APP_ID = "KggmNA4eK4RwJWET";
+const SCALEDRONE_APP_ID = "1CEk6A1QqfL1Qfg6";
 const ROOM_NAME = "observable-room";
 const APP_OPENED_EVENT = "open";
 const DATA_RECEIVED_EVENT = "data";
